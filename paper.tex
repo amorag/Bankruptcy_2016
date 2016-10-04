@@ -62,7 +62,75 @@ Bankruptcy forecasting \sep Financial Failure \sep Spanish Companies \sep Featur
 %										PROBLEM DESCRIPTION
 %*******************************************************************************
 \section{Problem Description and Datasets}
-\label{sec:problem}
+\label{sec:problem_data}
+
+The problem to address in this paper is the prediction of financial failure in Spanish companies, considering several financial and non-financial features.
+This is addressed as a classification problem, considering as class for each sample, the dependent variable, \textit{Bankruptcy}.
+% Antonio - explain a bit more the problem
+
+To this end, we have worked with a dataset extracted from the Infotel database\footnote{Bought from \url{http://infotel.es}, company devoted to gather information about many different companies in Spain along several years, and their financial results}. 
+The dataset is composed by data from about 470 companies gathered during six consecutive years (from 1998 to 2003). There are 2860 patterns, from which 62 correspond to financial failures or bankruptcy in those enterprises.
+
+% Antonio - Comment also about BOOK LOSSES if we consider this interesting to study... 170 of these companies had continuous book losses during the years 2001 - 2003, and the remaining 300 companies presented a good financial health. 
+
+There are 33 independent variables, including qualitative and quantitative information, i.e. categorical and numerical values; and being some of them financial indicators and the rest non-financial ones (such as the type of company, its size, or its age). 
+Initially, each sample was composed by 38 variables, but this set has been reduced by deleting useless ones, such as internal codes, which would not have significance in our study.
+
+Table \ref{tab:variables} shows the independent variables, their description and type. As it can be seen, the variables can take values from different numerical ranges: real, integer and binary. Also, some of the non-financial data take categorical values; these are the size of the company, the type of company and the auditor's opinion. Usually, company size is a real variable but in this case the companies are grouped in three separated categories according to their size. 
+
+\begin{table}[htpb]
+\caption{\label{tab:variables} Independent Variables}
+\centering
+\begin{scriptsize}
+\begin{tabular}{lll}
+\hline\noalign{\smallskip}
+Financial Variables & Description & Type\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Debt Structure & Long-Term Liabilities / Current Liabilities &  Real\\
+Debt Cost & Interest Cost / Total Liabilities &  Real\\
+Cash Ratio & Cash Equivalent / Current Liabilities &  Real\\
+Working Capital & Working Capital / Total Assets &  Real\\
+Debt Ratio & Total Assets / Total Liabilities &  Real\\
+Operating Income Margin & Operating Income / Net Sales &  Real\\
+Leverage & Liabilities / Equity &  Real\\
+Debt Paying Ability  & Operating Cash Flow / Total Liabilities  &  Real\\
+Return on Operating Assets & Operating Income / Average Operating Assets &  Real\\
+Return on Equity & Net Income / Average Total Equity &  Real\\
+Return on Assets & Net Income / Average Total Assets &  Real\\
+Asset Turnover & Net Sales / Average Total Assets &  Real\\
+Receivable Turnover & Net Sales / Average Receivables &  Real\\
+Stock Turnover & Cost of Sales / Average Inventory &  Real\\
+Current Ratio & Current Assets / Current Liabilities &  Real\\
+Acid Test & (Cash Equivalent + Marketable Securities & \\
+          & + Net receivables) / Current Liabilities &  Real\\
+\noalign{\smallskip} \hline\noalign{\smallskip}
+Non-financial Variables & Description & Type\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Size & Small|Medium|Large& Categorical\\
+Age of the company & & Integer\\
+Audited & If the company has been audited &  Binary\\
+Type of company & Public Company|Limited Liability Company|Others & Categorical\\
+Historic amount of money   & Since the company was created & Real\\
+spent on judicial incidences & &\\ \noalign{\smallskip}\hline
+Amount of money spent on  & Last year & Real\\
+judicial incidences & &\\
+Number of changes of location & & Integer\\
+Number of employees & & Integer\\
+Historic number of & Such as strikes, accidents...  &  Integer\\
+serious incidences & &\\
+Historic number of  & Since the company was created &  Integer\\
+judicial incidences & &\\
+Number of judicial incidences & Last year &  Integer\\
+Number of partners &  & Integer\\
+Auditor's opinion & Favourable|Exceptions|Unfavourable & Categorical\\
+Delay & If the company has submitted its annual accounts on time &  Binary\\
+Linked to a group &If the company is part of a group holding &  Binary\\
+\end{tabular}
+\end{scriptsize}
+\end{table}
+% Antonio - TODO: revise this table and include the possible values for categories and a column with the names of the variables.
+
+% Antonio - TODO: complete a bitmore this description... data balancing, feature selection, BOOK LOSSES, etc
 
 %*******************************************************************************
 %										STATE OF THE ART
